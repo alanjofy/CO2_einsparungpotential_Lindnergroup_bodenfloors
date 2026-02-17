@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Circular Rebuild CO₂ Tool</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- html2canvas -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+<section class="login-screen" id="loginScreen">
+  <div class="login-panel">
+    <div class="login-brand">
+      <img src="Lindner_Logo_from_txt.png" alt="Lindner logo" />
+      <h2>Lindner Access</h2>
+      <p>Please login to continue</p>
+    </div>
+
+    <form id="loginForm" class="login-form" autocomplete="off">
+      <label for="loginUsername">Username</label>
+      <input id="loginUsername" type="text" required />
+
+      <label for="loginPassword">Password</label>
+      <input id="loginPassword" type="password" required />
+
+      <button type="submit" id="loginBtn">Login</button>
+      <p id="loginError" class="login-error hidden">Invalid username or password</p>
+    </form>
+  </div>
+</section>
+
+<header>
+  <h1>🌿 Product Lifecycle Optimizer</h1>
+  <p>Smart. Analytical. Strategic</p>
+  <p>Cradle-to-grave climate impact comparison (A1–C4)</p>
+  <img class="brand-logo" src="Lindner_Logo_from_txt.png" alt="Lindner logo" />
+  <button id="logoutBtn" class="logout-btn hidden" type="button">Logout</button>
+</header>
+
+<main class="layout">
+
+  <!-- ================= LEFT PANEL ================= -->
+  <aside class="controls">
+
+    <div class="card">
+      <label>Project Context</label>
+      <select id="customerTypeSelect">
+        <option value="">Select your requirement</option>
+        <option value="installed product">I have an installed product</option>
+        <option value="New product">I need a new product</option>
+      </select>
+    </div>
+
+    <div class="card">
+      <label>Floor type</label>
+      <select id="bodenSelect">
+        <option value="">Select floor type</option>
+      </select>
+    </div>
+    
+    <div class="card hidden" id="subTypeCard">
+      <label>Floor Configuration</label>
+      <select id="subTypeSelect">
+        <option value="">Select configuration</option>
+      </select>
+    </div>
+
+    <div class="card">
+      <label>Product</label>
+      <select id="installedSelect">
+        <option value="">Select product</option>
+      </select>
+    </div>
+
+    <div class="card decision-card">
+      <label>End-of-life decision</label>
+      <select id="userChoiceSelect">
+        <option value="">Select end-of-life</option>
+      </select>
+    </div>
+
+  </aside>
+
+  <!-- ================= RIGHT PANEL ================= -->
+  <section class="visual hidden" id="resultBox">
+
+    <h2 id="comparisonTitle"></h2>
+
+    <div class="insight-grid">
+
+      <!-- ================= DONUT BLOCK ================= -->
+      <div class="donut-wrapper hidden" id="donutBlock">
+
+        <div class="donut-graphic">
+          <canvas id="pieChart"></canvas>
+
+          <div class="donut-center" id="donutCenter">
+            <span id="savingPercent">0%</span>
+            <small>CO₂ reduction</small>
+          </div>
+        </div>        <!-- 🌳 PREMIUM FOREST INSIGHT POP -->
+        <div class="forest-pop hidden" id="forestPop">
+          🌳 You didn't just avoid new production —
+          <strong>you preserved forest carbon resources too.</strong>
+        </div>
+
+      </div>
+
+      <!-- ================= IMPACT PANEL ================= -->
+      <div class="insights-panel" id="insightsPanel">
+
+        <h3>Impact insights</h3>
+
+        <div class="insight-row" id="insightRow">
+
+          <!-- Small reuse savings ring (hidden in installed mode via CSS) -->
+          <div class="reuse-savings hidden" id="reuseSavings">
+
+            <div class="reuse-savings-title">
+              Savings potential
+            </div>
+
+            <div class="reuse-ring" id="reuseRing">
+              <div class="reuse-ring-center">
+                <span id="reusePercent">0%</span>
+                <small>CO<sub>2</sub> reduction</small>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="commentaryBox"></div>
+
+        </div>
+
+
+
+        <div class="ligna-popup hidden" id="reuseLignaBoost">
+          <div class="ligna-popup-title">More Savings</div>
+          <ul class="ligna-popup-list">
+            <li>Less Trees are cut</li>
+            <li>Carbon remains stored longer during it's second life</li>
+          </ul>
+        </div>
+
+                <!-- EOL VISUAL -->
+        <div class="eol-visual hidden" id="eolVisual"></div>
+
+        <!-- WHAT IF REUSE -->
+        <div class="whatif hidden" id="whatIfBox">
+          <div class="reuse-arrow">⬆</div>
+          <h4>💡 What if this product were reused?</h4>
+          <p>
+            Reuse keeps material value in the system and avoids
+            emissions from new production.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- EXPORT BUTTON -->
+    <button id="exportBtn" onclick="exportPNG()">
+      ⬇ Export PNG
+    </button>
+
+    <!-- SCOPE NOTE -->
+    <p class="scope">
+      Scope: A1–C4 • Functional unit unchanged
+    </p>
+
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+

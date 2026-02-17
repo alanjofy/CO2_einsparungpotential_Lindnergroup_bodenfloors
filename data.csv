@@ -1,0 +1,17 @@
+﻿BodenType,InstalledType,UserChoice,A1C4_Installed,InstalledComment,NewOption,Scenario,A1C4_New,NewComment
+Calcium Sulphate,NORTEC,Reuse,14.6,,LOOP,Reuse,3.41,Products are reused
+Calcium Sulphate,NORTEC,Reuse,14.6,,LOOP,Recycling,4.1,Resources are saved
+Calcium Sulphate,NORTEC,Reuse,14.6,,LOOP,Landfilling,3.36,Disposed to the nature
+Calcium Sulphate,NORTEC,Recycling,16.8,,,,,
+Calcium Sulphate,NORTEC,Landfilling,13.1,,,,,
+Calcium Sulphate,Floor & More,Reuse,16.7,,Addlife,Reuse,3.41,Products are reused
+Calcium Sulphate,Floor & More,Reuse,16.7,,Addlife,Recycling,3.75,Resources are saved
+Calcium Sulphate,Floor & More,Reuse,16.7,,Addlife,Landfilling,3.13,Disposed to the nature
+Calcium Sulphate,Floor & More,Recycling,18.73,,,,,
+Calcium Sulphate,Floor & More,Landfilling,17.23,,,,,
+Wooden Floors,LIGNA,Reuse,5.14,,Relife,Reuse,1.02,Products are reused
+Wooden Floors,LIGNA,Reuse,5.14,,Relife,Incineration,2.28,Energy generated
+Wooden Floors,LIGNA,Incineration,5.49,,,,,
+Wooden Floors,LIGNA ST,Reuse,13.83,,Relife,Reuse,0.68,Products are reused
+Wooden Floors,LIGNA ST,Reuse,13.83,,Relife,Incineration,5.03,Energy generated
+Wooden Floors,LIGNA ST,Incineration,17.4,,,,,
