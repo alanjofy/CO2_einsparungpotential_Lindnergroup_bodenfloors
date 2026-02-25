@@ -1,15 +1,19 @@
-﻿customer choice,Boden type,Installed Type,User choices,A1-C4(kg co2),NEW option,A1-C4(kg co2)
-installed product,Calcium Sulphate,NORTEC,Reuse,14.6,LOOP,3.62
-installed product,Calcium Sulphate,NORTEC,Recycling,16.8,,
-installed product,Calcium Sulphate,NORTEC,Landfilling,13.1,,
-installed product,Calcium Sulphate,F&M,Reuse,16.7,Addlife,3.43
-installed product,Calcium Sulphate,F&M,Recycling,18.7,,
-installed product,Calcium Sulphate,F&M,Landfilling,17.2,,
-installed product,Wooden Floors,LIGNA,Reuse,5.14,Relife,1.4
-installed product,Wooden Floors,LIGNA,Incineration,5.49,,
-installed product,Wooden Floors,LIGNA ST,Reuse,13.83,Relife ST,2.85
-installed product,Wooden Floors,LIGNA ST,Incineration,17.4,,
-New product,Calcium Sulphate,NORTEC,,14.8,LOOP,3.62
-New product,Calcium Sulphate,F&M,,17.6,Addlife,3.43
-New product,Wooden Floors,LIGNA,,5.35,Relife,1.4
-New product,Wooden Floors,LIGNA ST,,15.65,Relife ST,2.85
+customer choice,Boden type,Installed Type,User choices,A1-C4(kg co2),thickness,declared unit,energy savings,thermal savings,water savings,NEW option,A1-C4(kg co2),thickness,declared unit,energy savings,thermal savings,water savings
+installed product,Calcium Sulphate,NORTEC,Reuse,14.6,38,58.7,9.16,13.23,4,LOOP,3.62,38,58,1.16,0,0
+installed product,Calcium Sulphate,NORTEC,Recycling,16.8,38,58.7,,,,,,,,,,
+installed product,Calcium Sulphate,NORTEC,Landfilling,13.1,38,58.7,,,,,,,,,,
+installed product,Calcium Sulphate,NORTEC,All scenarios,,,,,,,,,,,,,
+installed product,Calcium Sulphate,FLOOR & more,Reuse,16.7,36.54,48.7,5.81,12.71,4,Addlife,3.43,33,48,1.16,,
+installed product,Calcium Sulphate,FLOOR & more,Recycling,18.7,36.54,,,,,,,,,,,
+installed product,Calcium Sulphate,FLOOR & more,Landfilling,17.2,36.54,,,,,,,,,,,
+installed product,Calcium Sulphate,FLOOR & more,All scenarios,,,,,,,,,,,,,
+installed product,Wooden Floors,LIGNA,Reuse,5.14,38,26.54,0.6,,,Relife,1.4,38,26,1.16,0,0
+installed product,Wooden Floors,LIGNA,Incineration,5.49,38,26.54,,,,,,,,,,
+installed product,Wooden Floors,LIGNA,All scenarios,,,,,,,,,,,,,
+installed product,Wooden Floors,LIGNA ST,Reuse,13.83,38.4,30.54,0.6,,,Relife ST,2.85,38.4,30,0.60,0,0
+installed product,Wooden Floors,LIGNA ST,Incineration,17.4,38.4,30.54,,,,,,,,,,
+installed product,Wooden Floors,LIGNA ST,All scenarios,,,,,,,,,,,,,
+New product,Calcium Sulphate,NORTEC,,14.8,38,58.7,,,,LOOP,3.62,38,58,,,
+New product,Calcium Sulphate,FLOOR & more,,17.6,36.54,48.7,,,,Addlife,3.43,33,48,,,
+New product,Wooden Floors,LIGNA,,5.35,38,26.54,,,,Relife,1.4,38,26,,,
+New product,Wooden Floors,LIGNA ST,,15.65,38.4,30.54,,,,Relife ST,2.85,38.4,30,,,
