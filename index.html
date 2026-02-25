@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Circular Rebuild CO₂ Tool</title>
+  <title>Circular Rebuild CO2 Tool</title>
 
   <link rel="stylesheet" href="style.css" />
 
@@ -23,15 +23,15 @@
   <div class="login-panel">
     <div class="login-brand">
       <img src="Lindner_Logo_from_txt.png" alt="Lindner logo" />
-      <h2>Lindner Access</h2>
-      <p>Please login to continue</p>
+      <h2 id="loginTitle">Lindner Access</h2>
+      <p id="loginSubtitle">Please login to continue</p>
     </div>
 
     <form id="loginForm" class="login-form" autocomplete="off">
-      <label for="loginUsername">Username</label>
+      <label for="loginUsername" id="loginUserLabel">Username</label>
       <input id="loginUsername" type="text" required />
 
-      <label for="loginPassword">Password</label>
+      <label for="loginPassword" id="loginPassLabel">Password</label>
       <input id="loginPassword" type="password" required />
 
       <button type="submit" id="loginBtn">Login</button>
@@ -40,12 +40,35 @@
   </div>
 </section>
 
+<section class="welcome-overlay hidden" id="welcomeOverlay" aria-modal="true" role="dialog">
+  <div class="welcome-card">
+    <h2 id="welcomeTitle">Welcome to Lindner Circular Questionnaire</h2>
+    <p id="welcomeIntro">This tool helps you compare A1-C4 climate impact and identify better circular options.</p>
+    <ul class="welcome-list">
+      <li id="welcomeStep1">1) Select project context</li>
+      <li id="welcomeStep2">2) Choose floor type and product</li>
+      <li id="welcomeStep3">3) Select end-of-life pathway</li>
+      <li id="welcomeStep4">4) Review recommendation and export report</li>
+    </ul>
+    <label class="welcome-checkbox">
+      <input type="checkbox" id="welcomeDontShow" />
+      <span id="welcomeDontShowLabel">Don't show again</span>
+    </label>
+    <div class="welcome-actions">
+      <button type="button" id="welcomeSkipBtn" class="welcome-skip">Skip</button>
+      <button type="button" id="welcomeStartBtn">Start Assessment</button>
+    </div>
+  </div>
+</section>
 <header>
-  <h1>🌿 Product Lifecycle Optimizer</h1>
-  <p>Smart. Analytical. Strategic</p>
-  <p>Cradle-to-grave climate impact comparison (A1–C4)</p>
+  <h1 id="mainTitle">🌿 Product Lifecycle Optimizer</h1>
+  <p id="mainSubtitle">Smart. Analytical. Strategic</p>
+  <p id="mainScopeTitle">Cradle-to-grave climate impact comparison (A1-C4)</p>
   <img class="brand-logo" src="Lindner_Logo_from_txt.png" alt="Lindner logo" />
-  <button id="logoutBtn" class="logout-btn hidden" type="button">Logout</button>
+  <div class="header-actions">
+    <button id="langToggleBtn" class="lang-toggle hidden" type="button">DE</button>
+    <button id="logoutBtn" class="logout-btn hidden" type="button">Logout</button>
+  </div>
 </header>
 
 <main class="layout">
@@ -54,39 +77,39 @@
   <aside class="controls">
 
     <div class="card">
-      <label>Project Context</label>
+      <label id="projectContextLabel">Project Context</label>
       <select id="customerTypeSelect">
-        <option value="">Select your requirement</option>
-        <option value="installed product">I have an installed product</option>
-        <option value="New product">I need a new product</option>
+        <option value="" id="customerTypeDefaultOption">Select your requirement</option>
+        <option value="installed product" id="installedProductOption">I have an installed product</option>
+        <option value="New product" id="newProductOption">I need a new product</option>
       </select>
     </div>
 
     <div class="card">
-      <label>Floor type</label>
+      <label id="floorTypeLabel">Floor type</label>
       <select id="bodenSelect">
-        <option value="">Select floor type</option>
+        <option value="" id="floorTypeDefaultOption">Select floor type</option>
       </select>
     </div>
     
     <div class="card hidden" id="subTypeCard">
-      <label>Floor Configuration</label>
+      <label id="floorConfigLabel">Floor Configuration</label>
       <select id="subTypeSelect">
-        <option value="">Select configuration</option>
+        <option value="" id="floorConfigDefaultOption">Select configuration</option>
       </select>
     </div>
 
     <div class="card">
-      <label>Product</label>
+      <label id="productLabel">Product</label>
       <select id="installedSelect">
-        <option value="">Select product</option>
+        <option value="" id="productDefaultOption">Select product</option>
       </select>
     </div>
 
     <div class="card decision-card">
-      <label>End-of-life decision</label>
+      <label id="eolDecisionLabel">End-of-life decision</label>
       <select id="userChoiceSelect">
-        <option value="">Select end-of-life</option>
+        <option value="" id="eolDefaultOption">Select end-of-life</option>
       </select>
     </div>
 
@@ -107,11 +130,11 @@
 
           <div class="donut-center" id="donutCenter">
             <span id="savingPercent">0%</span>
-            <small>CO₂ reduction</small>
+            <small id="donutReductionLabel">CO2 reduction</small>
           </div>
         </div>        <!-- 🌳 PREMIUM FOREST INSIGHT POP -->
         <div class="forest-pop hidden" id="forestPop">
-          🌳 You didn't just avoid new production —
+          🌳 You didn't just avoid new production -
           <strong>you preserved forest carbon resources too.</strong>
         </div>
 
@@ -120,7 +143,7 @@
       <!-- ================= IMPACT PANEL ================= -->
       <div class="insights-panel" id="insightsPanel">
 
-        <h3>Impact insights</h3>
+        <h3 id="impactInsightsTitle">Impact insights</h3>
 
         <div class="insight-row" id="insightRow">
 
@@ -128,13 +151,13 @@
           <div class="reuse-savings hidden" id="reuseSavings">
 
             <div class="reuse-savings-title">
-              Savings potential
+              <span id="savingsPotentialLabel">Savings potential</span>
             </div>
 
             <div class="reuse-ring" id="reuseRing">
               <div class="reuse-ring-center">
                 <span id="reusePercent">0%</span>
-                <small>CO<sub>2</sub> reduction</small>
+                <small id="reuseReductionLabel">CO<sub>2</sub> reduction</small>
               </div>
             </div>
 
@@ -147,10 +170,10 @@
 
 
         <div class="ligna-popup hidden" id="reuseLignaBoost">
-          <div class="ligna-popup-title">More Savings</div>
+          <div class="ligna-popup-title" id="moreSavingsTitle">More Savings</div>
           <ul class="ligna-popup-list">
-            <li>Less Trees are cut</li>
-            <li>Carbon remains stored longer during it's second life</li>
+            <li id="moreSavingsItem1">Less Trees are cut</li>
+            <li id="moreSavingsItem2">Carbon remains stored longer during it's second life</li>
           </ul>
         </div>
 
@@ -177,8 +200,8 @@
     </button>
 
     <!-- SCOPE NOTE -->
-    <p class="scope">
-      Scope: A1–C4 • Functional unit unchanged
+    <p class="scope" id="scopeNote">
+      Scope: A1-C4 • Functional unit unchanged
     </p>
 
   </section>
@@ -189,4 +212,11 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
 
