@@ -115,21 +115,32 @@ button#loginBtn:hover {
   font-weight: 700;
 }
 
-button.logout-btn {
+.header-actions {
   position: absolute;
   right: 48px;
   bottom: 2px;
-  transform: none;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  z-index: 4;
+}
+
+button.lang-toggle,
+button.logout-btn {
   margin: 0;
-  padding: 7px 14px;
+  padding: 7px 12px;
   font-size: 12px;
   background: #ffffff;
   color: #d70426;
   border: 1px solid rgba(255,255,255,0.7);
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  z-index: 4;
 }
 
+button.lang-toggle {
+  min-width: 56px;
+}
+
+button.lang-toggle:hover,
 button.logout-btn:hover {
   background: #fff1f3;
   color: #b90a27;
@@ -941,6 +952,35 @@ body.new-mode .saving-text {
   margin-top: 10px;
 }
 
+body.new-mode .saving-round.under-circular {
+  --pct: 0;
+  margin-top: 12px;
+  width: 126px;
+  height: 126px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: conic-gradient(#16a34a calc(var(--pct) * 1%), #d1d5db 0);
+  position: relative;
+}
+
+body.new-mode .saving-round.under-circular::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+body.new-mode .saving-round-center {
+  position: relative;
+  z-index: 1;
+  font-size: 24px;
+  font-weight: 800;
+  color: #15803d;
+}
+
 /* =========================
    NEW PRODUCT â€“ SPLIT VIEW
 ========================= */
@@ -1534,7 +1574,7 @@ button:hover {
     top: 38%;
   }
 
-  button.logout-btn {
+  .header-actions {
     right: 24px;
     bottom: 2px;
   }
@@ -1748,3 +1788,401 @@ body.installed-mode .reuse-savings {
 body.installed-mode .insights-panel.reuse-mode .insight-row {
   grid-template-columns: 1fr !important;
 }
+
+/* =====================================================
+   POST-LOGIN WELCOME
+===================================================== */
+.welcome-overlay {
+  animation: welcomeFadeIn 180ms ease-out;
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.48);
+  backdrop-filter: blur(2px);
+}
+
+.welcome-card {
+  animation: welcomeCardIn 260ms ease-out;
+  width: min(680px, 100%);
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 26px 70px rgba(15, 23, 42, 0.26);
+  padding: 28px;
+}
+
+.welcome-card h2 {
+  font-size: 30px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+.welcome-card p {
+  font-size: 16px;
+  color: #334155;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.welcome-list {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.welcome-list li {
+  font-size: 15px;
+  color: #1f2937;
+}
+
+.welcome-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.welcome-skip {
+  width: auto;
+  margin-top: 8px;
+  padding: 10px 14px;
+  background: #ffffff;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  box-shadow: none;
+}
+
+.welcome-skip:hover {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.welcome-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: #334155;
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+#welcomeStartBtn {
+  margin-top: 8px;
+  width: auto;
+  flex: 1;
+  background: #d70426;
+}
+
+#welcomeStartBtn:hover {
+  background: #b90a27;
+}
+
+@keyframes welcomeFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes welcomeCardIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 700px) {
+  .welcome-card {
+  animation: welcomeCardIn 260ms ease-out;
+    padding: 22px;
+  }
+
+  .welcome-actions {
+    flex-direction: column;
+  }
+
+  .welcome-skip,
+  #welcomeStartBtn {
+    width: 100%;
+  }
+
+  .welcome-card h2 {
+    font-size: 24px;
+  }
+}
+
+.product-tech {
+  font-size: 0.86rem;
+  color: #6b7280;
+  margin: 4px 0 8px;
+}
+
+.tech-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.tech-compare p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #4b5563;
+}
+
+.additional-savings {
+  margin-top: 10px;
+}
+
+.additional-savings.in-card {
+  margin-top: 10px;
+}
+
+.additional-savings-title {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.additional-savings-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.saving-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #1f2937;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+body.installed-mode.all-scenarios-mode .insights-panel {
+  max-width: none;
+  width: 100%;
+  padding: 16px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+body.installed-mode.all-scenarios-mode .insight-grid {
+  display: block;
+}
+
+body.installed-mode.all-scenarios-mode .donut-wrapper {
+  display: none !important;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-board {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  border: 1px solid #d4deeb;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08);
+}
+
+body.installed-mode.all-scenarios-mode .scenario-summary-strip {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 14px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0 0 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-heading-block h3 {
+  margin: 0;
+  font-size: 1.12rem;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-heading-block p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.84rem;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+body.installed-mode.all-scenarios-mode .legend-chip {
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #1f2937;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+}
+
+body.installed-mode.all-scenarios-mode .legend-reuse { border-color: #22c55e66; background: #dcfce7; }
+body.installed-mode.all-scenarios-mode .legend-recycling { border-color: #f59e0b66; background: #fef3c7; }
+body.installed-mode.all-scenarios-mode .legend-landfilling { border-color: #ef444466; background: #fee2e2; }
+body.installed-mode.all-scenarios-mode .legend-incineration { border-color: #f9731666; background: #ffedd5; }
+
+body.installed-mode.all-scenarios-mode .scenario-chart-wrap.board-chart {
+  height: 390px;
+  background: transparent;
+  border: 0;
+  border-radius: 10px;
+  padding: 6px;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-deck {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  align-items: stretch;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-count-2 .scenario-deck {
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
+  max-width: 980px;
+  justify-self: center;
+  width: 100%;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-card {
+  border: 1px solid #d4deeb;
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 14px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 276px;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 6px;
+  border-radius: 14px 14px 0 0;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-card--reuse::before { background: #22c55e; }
+body.installed-mode.all-scenarios-mode .scenario-card--recycling::before { background: #f59e0b; }
+body.installed-mode.all-scenarios-mode .scenario-card--landfilling::before { background: #ef4444; }
+body.installed-mode.all-scenarios-mode .scenario-card--incineration::before { background: #f97316; }
+
+body.installed-mode.all-scenarios-mode .scenario-card-head h4 {
+  margin: 2px 0 0;
+  font-size: 1.1rem;
+  color: #1f2937;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-card-head p {
+  margin: 8px 0 12px;
+  color: #374151;
+  font-size: 0.98rem;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-visual {
+  border-radius: 12px;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+  min-height: 156px;
+  align-content: start;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-chip {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 600;
+  color: #253245;
+  width: fit-content;
+  max-width: 100%;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-card--reuse .scenario-visual {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+}
+
+body.installed-mode.all-scenarios-mode .scenario-card--recycling .scenario-visual {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+}
+
+body.installed-mode.all-scenarios-mode .scenario-card--landfilling .scenario-visual {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+}
+
+body.installed-mode.all-scenarios-mode .scenario-card--incineration .scenario-visual {
+  background: linear-gradient(135deg, #ffedd5, #fed7aa);
+}
+
+body.installed-mode.all-scenarios-mode .scenario-card-meta {
+  min-height: 56px;
+  margin-top: 10px;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-meta-spacer {
+  min-height: 56px;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-card .additional-savings {
+  margin-top: 0;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-card .additional-savings-title {
+  font-size: 0.8rem;
+}
+
+body.installed-mode.all-scenarios-mode .scenario-card .saving-pill {
+  font-size: 0.72rem;
+  padding: 5px 9px;
+}
+
+@media (max-width: 1180px) {
+  body.installed-mode.all-scenarios-mode .scenario-summary-strip {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  body.installed-mode.all-scenarios-mode .scenario-deck {
+    grid-template-columns: repeat(2, minmax(230px, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  body.installed-mode.all-scenarios-mode .scenario-board {
+    padding: 14px;
+  }
+
+  body.installed-mode.all-scenarios-mode .scenario-chart-wrap.board-chart {
+    height: 320px;
+  }
+
+  body.installed-mode.all-scenarios-mode .scenario-deck,
+  body.installed-mode.all-scenarios-mode .scenario-count-2 .scenario-deck {
+    grid-template-columns: 1fr;
+    max-width: none;
+  }
+}
+
+
+
